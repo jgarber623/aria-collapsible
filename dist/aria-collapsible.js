@@ -30,6 +30,7 @@
         if (this.$region) {
           this.$control.addEventListener("click", this.handleClick.bind(this));
           this.$region.setAttribute("aria-hidden", true);
+          this.$region.setAttribute("tabindex", -1);
         }
       }
     },
@@ -40,6 +41,9 @@
     toggle: function(value) {
       this.$control.setAttribute("aria-expanded", value);
       this.$region[!value ? "setAttribute" : "removeAttribute"]("aria-hidden", true);
+      if (value) {
+        this.$region.focus();
+      }
     }
   };
   return Collapsible;
