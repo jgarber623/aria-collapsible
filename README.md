@@ -2,6 +2,31 @@
 
 A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).
 
+### Key Features
+
+- Uses ARIA States and Properties
+- Dependency-free
+- AMD/CommonJS module support
+
+aria-collapsible is also really tiny:
+
+<table>
+	<tbody>
+		<tr>
+			<th>Uncompressed</th>
+			<td>1,571 bytes</td>
+		</tr>
+		<tr>
+			<th>Minified</th>
+			<td>1,169 bytes</td>
+		</tr>
+		<tr>
+			<th>Minifed and gzipped</th>
+			<td>625 bytes</td>
+		</tr>
+	</tbody>
+</table>
+
 
 ## Getting aria-collapsible
 
@@ -77,6 +102,8 @@ aria-collapsible is inspired by the following works:
 - Steve Faulkner's article, [HTML5 Accessibility Chops: hidden and aria-hidden](http://www.paciellogroup.com/blog/2012/05/html5-accessibility-chops-hidden-and-aria-hidden/)
 - Heydon Pickering's [Progressive collapsibles demo](http://heydonworks.com/practical_aria_examples/#progressive-collapsibles)
 - Nicolas Hoffman's [jQuery collapsible regions plugin](http://a11y.nicolas-hoffmann.net/hide-show/)
+
+Special thanks to [@ten1seven](https://github.com/ten1seven) for his help testing with VoiceOver and to [Viget](http://viget.com/) for their encouragement and commitment to open source projects.
 
 aria-collapsible is written and maintained by [@jgarber623](https://github.com/jgarber623).
 
