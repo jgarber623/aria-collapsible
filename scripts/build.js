@@ -19,4 +19,4 @@ var colors = require('colors'),
 exec('uglifyjs src/aria-collapsible.js --beautify "indent-level=2" --preamble "' + preamble + '" --output dist/aria-collapsible.js');
 exec('uglifyjs src/aria-collapsible.js --compress --mangle --preamble "' + preamble + '" --output dist/aria-collapsible.min.js');
 
-console.log(('aria-collapsible ' + pkg.version + ' built successfully!').green);
+console.log(colors.green('aria-collapsible %s built successfully!'), pkg.version);
