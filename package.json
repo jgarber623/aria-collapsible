@@ -4,7 +4,8 @@
   "description": "A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.",
   "main": "dist/aria-collapsible.js",
   "scripts": {
-    "build": "./scripts/build.js"
+    "build": "./scripts/build.js; ./scripts/stats.js",
+    "stats": "./scripts/stats.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,9 @@
   },
   "homepage": "https://github.com/jgarber623/aria-collapsible",
   "devDependencies": {
+    "cli-table": "^0.3.1",
+    "colors": "^1.1.0",
+    "gzip-size": "^1.0.0",
     "uglify-js": "^2.4.20"
   }
 }
