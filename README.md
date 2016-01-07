@@ -1,5 +1,7 @@
 # aria-collapsible
 
+[![npm version](https://badge.fury.io/js/aria-collapsible.svg)](https://badge.fury.io/js/aria-collapsible)
+
 A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).
 
 ### Key Features
