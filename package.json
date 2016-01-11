@@ -29,6 +29,7 @@
   "devDependencies": {
     "cli-table": "^0.3.1",
     "colors": "^1.1.0",
+    "comma-number": "^1.1.0",
     "gzip-size": "^1.0.0",
     "uglify-js": "^2.4.20"
   }
