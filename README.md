@@ -97,7 +97,7 @@ if ('addEventListener' in window) {
 ```
 
 
-## Acknowledgements
+## Acknowledgments
 
 aria-collapsible is inspired by the following works:
 
