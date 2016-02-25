@@ -48,7 +48,7 @@ To use aria-collapsible, your markup needs two elements: a **control** and a **r
 The two elements are associated by adding an `aria-controls="region"` attribute to the **control**. The value of the `aria-controls` attribute corresponds to the value of the **region**'s `id` attribute.
 
 ```html
-<button type="button" aria-controls="region" aria-expanded="false" id="control">Menu</button>
+<button type="button" aria-controls="region" aria-expanded="true" aria-hidden id="control">Menu</button>
 
 <nav id="region">
     <ul>
