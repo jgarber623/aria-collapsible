@@ -16,15 +16,15 @@ aria-collapsible is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>1,571 bytes</td>
+			<td>1,573 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>1,169 bytes</td>
+			<td>1,054 bytes</td>
 		</tr>
 		<tr>
 			<th>Minifed and gzipped</th>
-			<td>601 bytes</td>
+			<td>588 bytes</td>
 		</tr>
 	</tbody>
 </table>
@@ -67,7 +67,7 @@ Most browsers don't natively hide elements with the `aria-hidden` attribute so y
 
 ```css
 [aria-hidden] {
-    display: none;
+    display: none !important;
 }
 ```
 
@@ -82,6 +82,14 @@ collapsible.init();
 ```
 
 You can see the above in action in [the included example file](./example/index.html).
+
+Collapsible regions can be shown and hidden programatically using the `toggle()` method, which accepts a boolean `true` or `false`:
+
+```js
+collapsible.toggle(true);
+```
+
+`true` will show the collapsible region and `false` will—you guessed it—hide the collapsible region.
 
 
 ## Browser Support
@@ -105,9 +113,9 @@ aria-collapsible is inspired by the following works:
 - Heydon Pickering's [Progressive collapsibles demo](http://heydonworks.com/practical_aria_examples/#progressive-collapsibles)
 - Nicolas Hoffman's [jQuery collapsible regions plugin](http://a11y.nicolas-hoffmann.net/hide-show/)
 
-Special thanks to [@ten1seven](https://github.com/ten1seven) for his help testing with VoiceOver and to [Viget](http://viget.com/) for their encouragement and commitment to open source projects.
+Special thanks to [Jeremy Fields](http://ten1seven.com/) for his help testing with [VoiceOver](https://www.apple.com/accessibility/osx/voiceover/).
 
-aria-collapsible is written and maintained by [@jgarber623](https://github.com/jgarber623).
+aria-collapsible is written and maintained by [Jason Garber](https://sixtwothree.org/).
 
 
 ## License

@@ -7,7 +7,7 @@
 
 	<style>
 		[aria-hidden] {
-			display: none;
+			display: none !important;
 		}
 
 		*:focus {
@@ -76,7 +76,7 @@
 </head>
 <body>
 
-	<button type="button" aria-controls="region" aria-expanded="false" class="button" id="control">Menu</button>
+	<button type="button" aria-controls="region" aria-expanded="true" aria-hidden class="button" id="control">Menu</button>
 
 	<nav class="navigation" id="region" role="navigation">
 		<ul>

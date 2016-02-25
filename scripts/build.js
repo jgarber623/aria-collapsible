@@ -3,7 +3,6 @@
 var colors = require('colors'),
 	exec = require('child_process').exec,
 	pkg = require('../package.json'),
-	year = new Date().getFullYear(),
 	preamble = '/*!\n' +
 		' *  ' + pkg.name + ' ' + pkg.version + '\n' +
 		' *\n' +
@@ -11,7 +10,7 @@ var colors = require('colors'),
 		' *\n' +
 		' *  Source code available at: ' + pkg.homepage + '\n' +
 		' *\n' +
-		' *  (c) 2015-' + (year === 2015 ? 'present' : year) + ' ' + pkg.author.name + ' (' + pkg.author.url + ')\n' +
+		' *  (c) 2015–present ' + pkg.author.name + ' (' + pkg.author.url + ')\n' +
 		' *\n' +
 		' *  ' + pkg.name + ' may be freely distributed under the MIT license.\n' +
 		' */\n';

@@ -9,38 +9,40 @@
 }(this, function() {
 	'use strict';
 
-	var Collapsible = function($control) {
-		this.$control = $control;
-	};
+	return function($control) {
+		if ($control) {
+			var $region = document.getElementById($control.getAttribute('aria-controls'));
+		}
 
-	Collapsible.prototype = {
-		init: function() {
-			if (this.$control) {
-				this.$region = document.getElementById(this.$control.getAttribute('aria-controls'));
-
-				if (this.$region) {
-					this.$control.addEventListener('click', this.handleClick.bind(this));
-					this.$region.setAttribute('aria-hidden', true);
-					this.$region.setAttribute('tabindex', -1);
-				}
-			}
-		},
-
-		handleClick: function(event) {
+		var handleClick = function(event) {
 			event.preventDefault();
 
-			this.toggle(this.$control.getAttribute('aria-expanded') !== 'true');
-		},
+			toggle($control.getAttribute('aria-expanded') !== 'true');
+		};
 
-		toggle: function(value) {
-			this.$control.setAttribute('aria-expanded', value);
-			this.$region[!value ? 'setAttribute' : 'removeAttribute']('aria-hidden', true);
+		var toggle = function(value) {
+			$control.setAttribute('aria-expanded', value);
+			$region[!value ? 'setAttribute' : 'removeAttribute']('aria-hidden', true);
 
 			if (value) {
-				this.$region.focus();
+				$region.focus();
 			}
-		}
-	};
+		};
 
-	return Collapsible;
+		return {
+			init: function() {
+				if ($region) {
+					$control.setAttribute('aria-expanded', false);
+					$control.removeAttribute('aria-hidden');
+
+					$region.setAttribute('aria-hidden', true);
+					$region.setAttribute('tabindex', -1);
+
+					$control.addEventListener('click', handleClick);
+
+					this.toggle = toggle;
+				}
+			}
+		};
+	};
 }));
