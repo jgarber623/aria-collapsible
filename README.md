@@ -16,15 +16,15 @@ aria-collapsible is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>1,573 bytes</td>
+			<td>1,571 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>1,054 bytes</td>
+			<td>1,052 bytes</td>
 		</tr>
 		<tr>
 			<th>Minifed and gzipped</th>
-			<td>588 bytes</td>
+			<td>581 bytes</td>
 		</tr>
 	</tbody>
 </table>

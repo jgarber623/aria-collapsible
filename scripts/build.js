@@ -10,7 +10,7 @@ var colors = require('colors'),
 		' *\n' +
 		' *  Source code available at: ' + pkg.homepage + '\n' +
 		' *\n' +
-		' *  (c) 2015–present ' + pkg.author.name + ' (' + pkg.author.url + ')\n' +
+		' *  (c) 2015-present ' + pkg.author.name + ' (' + pkg.author.url + ')\n' +
 		' *\n' +
 		' *  ' + pkg.name + ' may be freely distributed under the MIT license.\n' +
 		' */\n';

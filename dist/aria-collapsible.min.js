@@ -1,11 +1,11 @@
 /*!
- *  aria-collapsible 2.0.0
+ *  aria-collapsible 2.0.1
  *
  *  A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.
  *
  *  Source code available at: https://github.com/jgarber623/aria-collapsible
  *
- *  (c) 2015–present Jason Garber (http://sixtwothree.org)
+ *  (c) 2015-present Jason Garber (http://sixtwothree.org)
  *
  *  aria-collapsible may be freely distributed under the MIT license.
  */
