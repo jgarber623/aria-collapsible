@@ -17,10 +17,12 @@
 		var handleClick = function(event) {
 			event.preventDefault();
 
-			toggle($control.getAttribute('aria-expanded') !== 'true');
+			toggle();
 		};
 
 		var toggle = function(value) {
+			if (value == null) value = $control.getAttribute('aria-expanded') !== 'true';
+
 			$control.setAttribute('aria-expanded', value);
 			$region[!value ? 'setAttribute' : 'removeAttribute']('aria-hidden', true);
 

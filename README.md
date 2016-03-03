@@ -83,7 +83,7 @@ collapsible.init();
 
 You can see the above in action in [the included example file](./example/index.html).
 
-Collapsible regions can be shown and hidden programatically using the `toggle()` method, which accepts a boolean `true` or `false`:
+Collapsible regions can be shown and hidden programatically using the `toggle()` method, which accepts an optional boolean `true` or `false`:
 
 ```js
 collapsible.toggle(true);
