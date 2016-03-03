@@ -20,8 +20,8 @@
 			toggle();
 		};
 
-		var toggle = function(value) {
-			if (value == null) value = $control.getAttribute('aria-expanded') !== 'true';
+		var toggle = function() {
+			var value = $control.getAttribute('aria-expanded') !== 'true';
 
 			$control.setAttribute('aria-expanded', value);
 			$region[!value ? 'setAttribute' : 'removeAttribute']('aria-hidden', true);
