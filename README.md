@@ -113,7 +113,7 @@ aria-collapsible is inspired by the following works:
 
 Special thanks to [Jeremy Fields](http://ten1seven.com/) for his help testing with [VoiceOver](https://www.apple.com/accessibility/osx/voiceover/).
 
-aria-collapsible is written and maintained by [Jason Garber](https://sixtwothree.org/).
+aria-collapsible is written and maintained by [Jason Garber](https://sixtwothree.org/) with the help of [some great contributors](https://github.com/jgarber623/aria-collapsible/graphs/contributors).
 
 
 ## License
