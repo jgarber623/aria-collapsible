@@ -23,7 +23,7 @@ aria-collapsible is also really tiny:
 			<td>1,058 bytes</td>
 		</tr>
 		<tr>
-			<th>Minifed and gzipped</th>
+			<th>Minified and gzipped</th>
 			<td>580 bytes</td>
 		</tr>
 	</tbody>
