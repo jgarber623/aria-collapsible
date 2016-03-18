@@ -20,14 +20,26 @@
 			toggle();
 		};
 
+		var teardown = function() {
+			$control.setAttribute('aria-expanded', true);
+			$control.setAttribute('aria-hidden', true);
+
+			$region.removeAttribute('aria-hidden');
+			$region.removeAttribute('tabindex');
+
+			$control.removeEventListener('click', handleClick);
+		};
+
 		var toggle = function() {
 			var value = $control.getAttribute('aria-expanded') !== 'true';
 
 			$control.setAttribute('aria-expanded', value);
-			$region[!value ? 'setAttribute' : 'removeAttribute']('aria-hidden', true);
 
 			if (value) {
+				$region.removeAttribute('aria-hidden');
 				$region.focus();
+			} else {
+				$region.setAttribute('aria-hidden', true);
 			}
 		};
 
@@ -42,6 +54,7 @@
 
 					$control.addEventListener('click', handleClick);
 
+					this.teardown = teardown;
 					this.toggle = toggle;
 				}
 			}

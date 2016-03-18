@@ -1,5 +1,5 @@
 /*!
- *  aria-collapsible 2.1.0
+ *  aria-collapsible 2.2.0
  *
  *  A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.
  *
@@ -28,12 +28,21 @@
       event.preventDefault();
       toggle();
     };
+    var teardown = function() {
+      $control.setAttribute("aria-expanded", true);
+      $control.setAttribute("aria-hidden", true);
+      $region.removeAttribute("aria-hidden");
+      $region.removeAttribute("tabindex");
+      $control.removeEventListener("click", handleClick);
+    };
     var toggle = function() {
       var value = $control.getAttribute("aria-expanded") !== "true";
       $control.setAttribute("aria-expanded", value);
-      $region[!value ? "setAttribute" : "removeAttribute"]("aria-hidden", true);
       if (value) {
+        $region.removeAttribute("aria-hidden");
         $region.focus();
+      } else {
+        $region.setAttribute("aria-hidden", true);
       }
     };
     return {
@@ -44,6 +53,7 @@
           $region.setAttribute("aria-hidden", true);
           $region.setAttribute("tabindex", -1);
           $control.addEventListener("click", handleClick);
+          this.teardown = teardown;
           this.toggle = toggle;
         }
       }

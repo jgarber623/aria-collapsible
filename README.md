@@ -16,15 +16,15 @@ aria-collapsible is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>1,586 bytes</td>
+			<td>1,943 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>1,058 bytes</td>
+			<td>1,263 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified and gzipped</th>
-			<td>580 bytes</td>
+			<td>601 bytes</td>
 		</tr>
 	</tbody>
 </table>
@@ -87,6 +87,12 @@ Collapsible regions can be shown and hidden programatically using the `toggle()`
 
 ```js
 collapsible.toggle();
+```
+
+You can also teardown a collapsible region, resetting the DOM to its initial state and removing event handlers:
+
+```js
+collapsible.teardown();
 ```
 
 
