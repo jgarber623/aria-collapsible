@@ -10,42 +10,30 @@
 	'use strict';
 
 	return function($control) {
-		if ($control) {
-			var $region = document.getElementById($control.getAttribute('aria-controls'));
-		}
+		var $region = document.getElementById($control.getAttribute('aria-controls'));
 
-		var handleClick = function(event) {
-			event.preventDefault();
+		if ($control && $region) {
+			var handleClick = function(event) {
+				event.preventDefault();
 
-			toggle();
-		};
+				toggle();
+			};
 
-		var teardown = function() {
-			$control.setAttribute('aria-expanded', true);
-			$control.setAttribute('aria-hidden', true);
+			var toggle = function() {
+				var value = $control.getAttribute('aria-expanded') !== 'true';
 
-			$region.removeAttribute('aria-hidden');
-			$region.removeAttribute('tabindex');
+				$control.setAttribute('aria-expanded', value);
 
-			$control.removeEventListener('click', handleClick);
-		};
+				if (value) {
+					$region.removeAttribute('aria-hidden');
+					$region.focus();
+				} else {
+					$region.setAttribute('aria-hidden', true);
+				}
+			};
 
-		var toggle = function() {
-			var value = $control.getAttribute('aria-expanded') !== 'true';
-
-			$control.setAttribute('aria-expanded', value);
-
-			if (value) {
-				$region.removeAttribute('aria-hidden');
-				$region.focus();
-			} else {
-				$region.setAttribute('aria-hidden', true);
-			}
-		};
-
-		return {
-			init: function() {
-				if ($region) {
+			return {
+				init: function() {
 					$control.setAttribute('aria-expanded', false);
 					$control.removeAttribute('aria-hidden');
 
@@ -54,10 +42,19 @@
 
 					$control.addEventListener('click', handleClick);
 
-					this.teardown = teardown;
 					this.toggle = toggle;
+				},
+
+				teardown: function() {
+					$control.setAttribute('aria-expanded', true);
+					$control.setAttribute('aria-hidden', true);
+
+					$region.removeAttribute('aria-hidden');
+					$region.removeAttribute('tabindex');
+
+					$control.removeEventListener('click', handleClick);
 				}
-			}
-		};
+			};
+		}
 	};
 }));
