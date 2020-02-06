@@ -1,43 +1,32 @@
 # aria-collapsible
 
-[![npm version](https://badge.fury.io/js/aria-collapsible.svg)](https://badge.fury.io/js/aria-collapsible)
+**A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).**
 
-A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).
+[![npm](https://img.shields.io/npm/v/aria-collapsible.svg?style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
+[![Downloads](https://img.shields.io/npm/dt/aria-collapsible.svg?style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
 
 ### Key Features
 
 - Uses ARIA States and Properties
 - Dependency-free
-- AMD/CommonJS module support
+- ES2015/AMD/Node module support
 
 aria-collapsible is also really tiny:
 
-<table>
-	<tbody>
-		<tr>
-			<th>Uncompressed</th>
-			<td>1,942 bytes</td>
-		</tr>
-		<tr>
-			<th>Minified</th>
-			<td>1,254 bytes</td>
-		</tr>
-		<tr>
-			<th>Minified and gzipped</th>
-			<td>597 bytes</td>
-		</tr>
-	</tbody>
-</table>
-
+| Format                 | File Size   | Minified Size | Gzipped Size |
+|:-----------------------|:------------|:--------------|:-------------|
+| Uncompressed (module)  | 1,639 bytes | 1,106 bytes   | 534 bytes    |
+| Uncompressed (browser) | 1,996 bytes | 1,272 bytes   | 614 bytes    |
+| Minified (browser)     | 1,274 bytes | 1,272 bytes   | 614 bytes    |
 
 ## Getting aria-collapsible
 
-Adding aria-collapsible to your project is easy! You've got a couple options:
+You've got a couple options for adding aria-collapsible to your project:
 
 - [Download a tagged version](https://github.com/jgarber623/aria-collapsible/tags) from GitHub and do it yourself _(old school)_.
-- Install via [Bower](http://bower.io/): `bower install aria-collapsible`
-- Install via [npm](https://www.npmjs.com/): `npm install aria-collapsible`
-
+- Install using [npm](https://www.npmjs.com/package/aria-collapsible): `npm install aria-collapsible --save`
+- Install using [Yarn](https://yarnpkg.com/en/package/aria-collapsible): `yarn add aria-collapsible`
+- Install using [Bower](https://bower.io/search/?q=aria-collapsible): `bower install aria-collapsible --save`
 
 ## Usage
 
@@ -51,13 +40,13 @@ The two elements are associated by adding an `aria-controls="region"` attribute 
 <button type="button" aria-controls="region" aria-expanded="true" aria-hidden id="control">Menu</button>
 
 <nav id="region">
-    <ul>
-        <li><a href="#">Chapter 1</a></li>
-        <li><a href="#">Chapter 2</a></li>
-        <li><a href="#">Chapter 3</a></li>
-        <li><a href="#">Chapter 4</a></li>
-        <li><a href="#">Chapter 5</a></li>
-    </ul>
+  <ul>
+    <li><a href="#">Chapter 1</a></li>
+    <li><a href="#">Chapter 2</a></li>
+    <li><a href="#">Chapter 3</a></li>
+    <li><a href="#">Chapter 4</a></li>
+    <li><a href="#">Chapter 5</a></li>
+  </ul>
 </nav>
 ```
 
@@ -67,18 +56,18 @@ Most browsers don't natively hide elements with the `aria-hidden` attribute so y
 
 ```css
 [aria-hidden] {
-    display: none !important;
+  display: none !important;
 }
 ```
 
 ### JavaScript
 
-Lastly, initialize aria-collapsible by creating a `new Collapsible`, passing in a DOM reference to the **control**, and calling the `init()` method.
+Lastly, initialize aria-collapsible by creating a `new Collapsible`, passing in a DOM reference to the **control**, and calling the `setup()` method.
 
 ```js
-var collapsible = new Collapsible(document.getElementById('control'));
+const collapsible = new Collapsible(document.getElementById('control'));
 
-collapsible.init();
+collapsible.setup();
 ```
 
 You can see the above in action in [the included example file](./example/index.html).
@@ -95,19 +84,9 @@ You can also teardown a collapsible region, resetting the DOM to its initial sta
 collapsible.teardown();
 ```
 
-
 ## Browser Support
 
-aria-collapsible works in all modern browsers.
-
-It makes use of the [addEventListener method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) which first appeared in Internet Explorer in version 9.0. To avoid throwing JavaScript errors in browsers that don't support this method, you can [cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard):
-
-```js
-if ('addEventListener' in window) {
-    // Your scripts here…
-}
-```
-
+aria-collapsible works in modern browsers.
 
 ## Acknowledgments
 
@@ -120,7 +99,6 @@ aria-collapsible is inspired by the following works:
 Special thanks to [Jeremy Fields](http://ten1seven.com/) for his help testing with [VoiceOver](https://www.apple.com/accessibility/osx/voiceover/).
 
 aria-collapsible is written and maintained by [Jason Garber](https://sixtwothree.org/) with the help of [some great contributors](https://github.com/jgarber623/aria-collapsible/graphs/contributors).
-
 
 ## License
 
