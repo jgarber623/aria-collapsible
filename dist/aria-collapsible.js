@@ -1,5 +1,5 @@
 /*!
- *  aria-collapsible 2.2.1
+ *  aria-collapsible v3.0.0
  *
  *  A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.
  *
@@ -10,25 +10,20 @@
  *  aria-collapsible may be freely distributed under the MIT license.
  */
 
-(function(root, factory) {
-  if (typeof define === "function" && define.amd) {
-    define([], factory);
-  } else if (typeof exports === "object") {
-    module.exports = factory();
-  } else {
-    root.Collapsible = factory();
-  }
-})(this, function() {
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = global || self, 
+  global.Collapsible = factory());
+})(this, (function() {
   "use strict";
-  return function($control) {
-    var $region = document.getElementById($control.getAttribute("aria-controls"));
+  function Collapsible($control) {
+    const $region = document.getElementById($control.getAttribute("aria-controls"));
     if ($control && $region) {
-      var handleClick = function(event) {
+      const handleClick = event => {
         event.preventDefault();
-        toggle();
+        handleToggle();
       };
-      var toggle = function() {
-        var value = $control.getAttribute("aria-expanded") !== "true";
+      const handleToggle = () => {
+        const value = $control.getAttribute("aria-expanded") !== "true";
         $control.setAttribute("aria-expanded", value);
         if (value) {
           $region.removeAttribute("aria-hidden");
@@ -38,15 +33,15 @@
         }
       };
       return {
-        init: function() {
+        setup: () => {
           $control.setAttribute("aria-expanded", false);
           $control.removeAttribute("aria-hidden");
           $region.setAttribute("aria-hidden", true);
           $region.setAttribute("tabindex", -1);
           $control.addEventListener("click", handleClick);
-          this.toggle = toggle;
+          this.toggle = handleToggle;
         },
-        teardown: function() {
+        teardown: () => {
           $control.setAttribute("aria-expanded", true);
           $control.setAttribute("aria-hidden", true);
           $region.removeAttribute("aria-hidden");
@@ -55,5 +50,6 @@
         }
       };
     }
-  };
-});
+  }
+  return Collapsible;
+}));
