@@ -1,60 +1,48 @@
-(function(root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		define([], factory);
-	} else if (typeof exports === 'object') {
-		module.exports = factory();
-	} else {
-		root.Collapsible = factory();
-	}
-}(this, function() {
-	'use strict';
+export default function Collapsible($control) {
+  const $region = document.getElementById($control.getAttribute('aria-controls'));
 
-	return function($control) {
-		var $region = document.getElementById($control.getAttribute('aria-controls'));
+  if ($control && $region) {
+    const handleClick = event => {
+      event.preventDefault();
 
-		if ($control && $region) {
-			var handleClick = function(event) {
-				event.preventDefault();
+      handleToggle();
+    };
 
-				toggle();
-			};
+    const handleToggle = () => {
+      const value = $control.getAttribute('aria-expanded') !== 'true';
 
-			var toggle = function() {
-				var value = $control.getAttribute('aria-expanded') !== 'true';
+      $control.setAttribute('aria-expanded', value);
 
-				$control.setAttribute('aria-expanded', value);
+      if (value) {
+        $region.removeAttribute('aria-hidden');
+        $region.focus();
+      } else {
+        $region.setAttribute('aria-hidden', true);
+      }
+    };
 
-				if (value) {
-					$region.removeAttribute('aria-hidden');
-					$region.focus();
-				} else {
-					$region.setAttribute('aria-hidden', true);
-				}
-			};
+    return {
+      setup: () => {
+        $control.setAttribute('aria-expanded', false);
+        $control.removeAttribute('aria-hidden');
 
-			return {
-				init: function() {
-					$control.setAttribute('aria-expanded', false);
-					$control.removeAttribute('aria-hidden');
+        $region.setAttribute('aria-hidden', true);
+        $region.setAttribute('tabindex', -1);
 
-					$region.setAttribute('aria-hidden', true);
-					$region.setAttribute('tabindex', -1);
+        $control.addEventListener('click', handleClick);
 
-					$control.addEventListener('click', handleClick);
+        this.toggle = handleToggle;
+      },
 
-					this.toggle = toggle;
-				},
+      teardown: () => {
+        $control.setAttribute('aria-expanded', true);
+        $control.setAttribute('aria-hidden', true);
 
-				teardown: function() {
-					$control.setAttribute('aria-expanded', true);
-					$control.setAttribute('aria-hidden', true);
+        $region.removeAttribute('aria-hidden');
+        $region.removeAttribute('tabindex');
 
-					$region.removeAttribute('aria-hidden');
-					$region.removeAttribute('tabindex');
-
-					$control.removeEventListener('click', handleClick);
-				}
-			};
-		}
-	};
-}));
+        $control.removeEventListener('click', handleClick);
+      }
+    };
+  }
+}
