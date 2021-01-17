@@ -2,8 +2,9 @@
 
 **A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).**
 
-[![npm](https://img.shields.io/npm/v/aria-collapsible.svg?style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
-[![Downloads](https://img.shields.io/npm/dt/aria-collapsible.svg?style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
+[![npm](https://img.shields.io/npm/v/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
+[![Downloads](https://img.shields.io/npm/dt/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
+[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/jgarber623/aria-collapsible?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/jgarber623/aria-collapsible)
 
 ### Key Features
 
