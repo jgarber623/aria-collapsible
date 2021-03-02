@@ -36,9 +36,9 @@
     "test": "eslint ."
   },
   "devDependencies": {
-    "eslint": "^7.20.0",
-    "rollup": "^2.39.0",
-    "rollup-plugin-filesize": "^9.1.0",
+    "eslint": "^7.21.0",
+    "rollup": "^2.40.0",
+    "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-terser": "^7.0.2"
   }
 }
