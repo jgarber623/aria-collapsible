@@ -8,15 +8,9 @@
     "javascript"
   ],
   "homepage": "https://github.com/jgarber623/aria-collapsible",
-  "bugs": {
-    "url": "https://github.com/jgarber623/aria-collapsible/issues"
-  },
+  "bugs": "https://github.com/jgarber623/aria-collapsible/issues",
   "license": "MIT",
-  "author": {
-    "name": "Jason Garber",
-    "email": "jason@sixtwothree.org",
-    "url": "http://sixtwothree.org"
-  },
+  "author": "Jason Garber <jason@sixtwothree.org> (http://sixtwothree.org)",
   "files": [
     "dist"
   ],
@@ -26,19 +20,16 @@
   "directories": {
     "example": "example"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jgarber623/aria-collapsible"
-  },
+  "repository": "github:jgarber623/aria-collapsible",
   "scripts": {
     "build": "rollup --config",
     "start": "rollup --config --watch",
     "test": "eslint ."
   },
   "devDependencies": {
-    "eslint": "^8.1.0",
-    "rollup": "^2.58.0",
-    "rollup-plugin-filesize": "^9.1.1",
-    "rollup-plugin-terser": "^7.0.2"
+    "@jgarber/eslint-config": "*",
+    "rollup": "*",
+    "rollup-plugin-filesize": "*",
+    "rollup-plugin-terser": "*"
   }
 }
