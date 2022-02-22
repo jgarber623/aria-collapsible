@@ -27,7 +27,6 @@ You've got a couple options for adding aria-collapsible to your project:
 - [Download a tagged version](https://github.com/jgarber623/aria-collapsible/tags) from GitHub and do it yourself _(old school)_.
 - Install using [npm](https://www.npmjs.com/package/aria-collapsible): `npm install aria-collapsible --save`
 - Install using [Yarn](https://yarnpkg.com/en/package/aria-collapsible): `yarn add aria-collapsible`
-- Install using [Bower](https://bower.io/search/?q=aria-collapsible): `bower install aria-collapsible --save`
 
 ## Usage
 
