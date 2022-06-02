@@ -26,4 +26,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: git diff --quiet
+      - name: Check for changed files
+        run: |
+          git status
+          git diff --quiet
