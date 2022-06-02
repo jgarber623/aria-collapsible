@@ -4,6 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
 [![Downloads](https://img.shields.io/npm/dt/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
+[![Build](https://img.shields.io/github/workflow/status/jgarber623/aria-collapsible/CI?logo=github&style=for-the-badge)](https://github.com/jgarber623/aria-collapsible/actions/workflows/ci.yml)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/jgarber623/aria-collapsible?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/jgarber623/aria-collapsible)
 
 ### Key Features
@@ -16,9 +17,9 @@ aria-collapsible is also really tiny:
 
 | Format                 | File Size   | Minified Size | Gzipped Size |
 |:-----------------------|:------------|:--------------|:-------------|
-| Uncompressed (module)  | 1,639 bytes | 1,106 bytes   | 534 bytes    |
-| Uncompressed (browser) | 1,996 bytes | 1,272 bytes   | 614 bytes    |
-| Minified (browser)     | 1,274 bytes | 1,272 bytes   | 614 bytes    |
+| Uncompressed (module)  | 1,999 bytes | 1,386 bytes   | 612 bytes    |
+| Uncompressed (browser) | 2,410 bytes | 1,432 bytes   | 701 bytes    |
+| Minified (browser)     | 1,434 bytes | 1,432 bytes   | 700 bytes    |
 
 ## Getting aria-collapsible
 
@@ -65,7 +66,7 @@ Most browsers don't natively hide elements with the `aria-hidden` attribute so y
 Lastly, initialize aria-collapsible by creating a `new Collapsible`, passing in a DOM reference to the **control**, and calling the `setup()` method.
 
 ```js
-const collapsible = new Collapsible(document.getElementById('control'));
+const collapsible = new Collapsible(document.querySelector('#control'));
 
 collapsible.setup();
 ```
