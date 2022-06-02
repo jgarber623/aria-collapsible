@@ -15,8 +15,8 @@ jobs:
         with:
           languages: javascript
       - uses: github/codeql-action/analyze@v2
-  test:
-    name: Test files
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
       - run: npm test
   build:
     name: Build
-    needs: [analyze, test]
+    needs: [analyze, lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
