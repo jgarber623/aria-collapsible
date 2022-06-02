@@ -1,48 +1,59 @@
-export default function Collapsible($control) {
-  const $region = document.getElementById($control.getAttribute('aria-controls'));
+const removeAttribute = (node, attr) => node.removeAttribute(attr);
+const setAttribute = (node, attr, value) => node.setAttribute(attr, value);
 
-  if ($control && $region) {
-    const handleClick = event => {
-      event.preventDefault();
+export default class Collapsible {
+  constructor(control) {
+    const region = document.getElementById(control.getAttribute('aria-controls'));
 
-      handleToggle();
-    };
+    if (control && region) {
+      this.control = control;
+      this.region = region;
 
-    const handleToggle = () => {
-      const value = $control.getAttribute('aria-expanded') !== 'true';
-
-      $control.setAttribute('aria-expanded', value);
-
-      if (value) {
-        $region.removeAttribute('aria-hidden');
-        $region.focus();
-      } else {
-        $region.setAttribute('aria-hidden', true);
-      }
-    };
-
-    return {
-      setup: () => {
-        $control.setAttribute('aria-expanded', false);
-        $control.removeAttribute('aria-hidden');
-
-        $region.setAttribute('aria-hidden', true);
-        $region.setAttribute('tabindex', -1);
-
-        $control.addEventListener('click', handleClick);
-
-        this.toggle = handleToggle;
-      },
-
-      teardown: () => {
-        $control.setAttribute('aria-expanded', true);
-        $control.setAttribute('aria-hidden', true);
-
-        $region.removeAttribute('aria-hidden');
-        $region.removeAttribute('tabindex');
-
-        $control.removeEventListener('click', handleClick);
-      }
-    };
+      this.setup = this.#setup;
+      this.teardown = this.#teardown;
+    }
   }
+
+  #handleClick = (event) => {
+    event.preventDefault();
+
+    this.#handleToggle();
+  };
+
+  #handleToggle = (control = this.control, region = this.region) => {
+    const value = control.getAttribute('aria-expanded') !== 'true';
+
+    setAttribute(control, 'aria-expanded', value);
+
+    if (value) {
+      removeAttribute(region, 'aria-hidden');
+      region.focus();
+    } else {
+      setAttribute(region, 'aria-hidden', true);
+    }
+  };
+
+  #setup = (control = this.control, region = this.region) => {
+    setAttribute(control, 'aria-expanded', false);
+    removeAttribute(control, 'aria-hidden');
+
+    setAttribute(region, 'aria-hidden', true);
+    setAttribute(region, 'tabindex', -1);
+
+    control.addEventListener('click', this.#handleClick);
+
+    this.toggle = this.#handleToggle;
+  };
+
+  #teardown = (control = this.control, region = this.region) => {
+    setAttribute(control, 'aria-expanded', true);
+    setAttribute(control, 'aria-hidden', true);
+
+    removeAttribute(region, 'aria-hidden');
+    removeAttribute(region, 'tabindex');
+
+    control.removeEventListener('click', this.#handleClick);
+
+    this.toggle = undefined;
+  };
 }
