@@ -1,6 +1,6 @@
 {
   "name": "aria-collapsible",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.",
   "keywords": [
     "accessibility",
@@ -10,7 +10,11 @@
   "homepage": "https://github.com/jgarber623/aria-collapsible",
   "bugs": "https://github.com/jgarber623/aria-collapsible/issues",
   "license": "MIT",
-  "author": "Jason Garber <jason@sixtwothree.org> (http://sixtwothree.org)",
+  "author": {
+    "name": "Jason Garber",
+    "email": "jason@sixtwothree.org",
+    "url": "https://sixtwothree.org"
+  },
   "files": [
     "dist"
   ],
