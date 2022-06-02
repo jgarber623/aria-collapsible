@@ -3,6 +3,18 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+  analyze:
+    name: Analyze
+    permissions:
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+      - uses: github/codeql-action/analyze@v2
   test:
     name: Test files
     runs-on: ubuntu-latest
@@ -16,7 +28,7 @@ jobs:
       - run: npm test
   build:
     name: Build
-    needs: test
+    needs: [analyze, test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
