@@ -87,7 +87,13 @@ collapsible.teardown();
 
 ## Browser Support
 
-aria-collapsible works in modern browsers.
+aria-collapsible works in modern browsers. The library makes use of several new(ish) JavaScript features, including:
+
+- Arrow function expressions ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
+- Classes ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes))
+- Private class fields ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields))
+
+aria-collapsible, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
 
 ## Acknowledgments
 
