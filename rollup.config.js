@@ -1,76 +1,28 @@
 import pkg from './package.json';
+import banner from './config/banner.js';
 
-import filesize from 'rollup-plugin-filesize';
 import { terser } from 'rollup-plugin-terser';
 
-const globalName = 'Collapsible';
-const srcFilePath = 'src/aria-collapsible.js';
-
-const filesizePluginOptions = {
-  format: {
-    exponent: 0,
-    fullform: true
-  },
-  theme: 'light'
+const terserConfig = {
+  compress: false,
+  mangle: false,
+  output: { beautify: true, indent_level: 2 }
 };
 
-const preamble = `/*!
- *  ${pkg.name} v${pkg.version}
- *
- *  ${pkg.description}
- *
- *  Source code available at: ${pkg.homepage}
- *
- *  (c) 2015-present ${pkg.author.name} (${pkg.author.url})
- *
- *  ${pkg.name} may be freely distributed under the ${pkg.license} license.
- */
-`;
-
-export default [
-  // aria-collapsible.mjs and aria-collapsible.js
+export default ({ input, name }) => [
   {
-    input: srcFilePath,
-    output: [
-      {
-        file: pkg.module,
-        format: 'es'
-      },
-      {
-        file: pkg.main,
-        format: 'umd',
-        name: globalName
-      }
-    ],
-    plugins: [
-      filesize(filesizePluginOptions),
-      terser({
-        compress: false,
-        mangle: false,
-        output: {
-          beautify: true,
-          indent_level: 2,
-          preamble: preamble
-        }
-      })
-    ]
+    input,
+    output: { banner, file: pkg.module, format: 'es' },
+    plugins: [terser(terserConfig)]
   },
-
-  // aria-collapsible.min.js
   {
-    input: srcFilePath,
-    output: {
-      file: pkg.browser,
-      format: 'umd',
-      name: globalName
-    },
-    plugins: [
-      filesize(filesizePluginOptions),
-      terser({
-        output: {
-          preamble: preamble
-        }
-      })
-    ]
+    input,
+    output: { banner, file: pkg.main, format: 'umd', name },
+    plugins: [terser(terserConfig)]
+  },
+  {
+    input,
+    output: { banner, file: pkg.browser, format: 'umd', name },
+    plugins: [terser()]
   }
 ];

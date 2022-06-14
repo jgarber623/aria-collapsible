@@ -1,6 +1,6 @@
 {
   "name": "aria-collapsible",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.",
   "keywords": [
     "accessibility",
@@ -26,14 +26,12 @@
   },
   "repository": "github:jgarber623/aria-collapsible",
   "scripts": {
-    "build": "rollup --config",
-    "start": "rollup --config --watch",
+    "build": "rollup --config --input src/aria-collapsible.mjs --name Collapsible",
     "test": "eslint ."
   },
   "devDependencies": {
     "@jgarber/eslint-config": "*",
     "rollup": "*",
-    "rollup-plugin-filesize": "*",
     "rollup-plugin-terser": "*"
   }
 }
