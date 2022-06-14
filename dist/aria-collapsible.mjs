@@ -1,5 +1,5 @@
 /*!
- *  aria-collapsible v4.0.0
+ *  aria-collapsible v4.0.1
  *
  *  A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.
  *
@@ -9,6 +9,9 @@
  *
  *  aria-collapsible may be freely distributed under the MIT license.
  */
+const ariaExpanded = "aria-expanded";
+
+const ariaHidden = "aria-hidden";
 
 const removeAttribute = (node, attr) => node.removeAttribute(attr);
 
@@ -29,27 +32,27 @@ class Collapsible {
     this.#handleToggle();
   };
   #handleToggle=(control = this.control, region = this.region) => {
-    const value = control.getAttribute("aria-expanded") !== "true";
-    setAttribute(control, "aria-expanded", value);
+    const value = control.getAttribute(ariaExpanded) !== "true";
+    setAttribute(control, ariaExpanded, value);
     if (value) {
-      removeAttribute(region, "aria-hidden");
+      removeAttribute(region, ariaHidden);
       region.focus();
     } else {
-      setAttribute(region, "aria-hidden", true);
+      setAttribute(region, ariaHidden, true);
     }
   };
   #setup=(control = this.control, region = this.region) => {
-    setAttribute(control, "aria-expanded", false);
-    removeAttribute(control, "aria-hidden");
-    setAttribute(region, "aria-hidden", true);
+    setAttribute(control, ariaExpanded, false);
+    removeAttribute(control, ariaHidden);
+    setAttribute(region, ariaHidden, true);
     setAttribute(region, "tabindex", -1);
     control.addEventListener("click", this.#handleClick);
     this.toggle = this.#handleToggle;
   };
   #teardown=(control = this.control, region = this.region) => {
-    setAttribute(control, "aria-expanded", true);
-    setAttribute(control, "aria-hidden", true);
-    removeAttribute(region, "aria-hidden");
+    setAttribute(control, ariaExpanded, true);
+    setAttribute(control, ariaHidden, true);
+    removeAttribute(region, ariaHidden);
     removeAttribute(region, "tabindex");
     control.removeEventListener("click", this.#handleClick);
     this.toggle = undefined;
