@@ -1,3 +1,6 @@
+const ariaExpanded = 'aria-expanded';
+const ariaHidden = 'aria-hidden';
+
 const removeAttribute = (node, attr) => node.removeAttribute(attr);
 const setAttribute = (node, attr, value) => node.setAttribute(attr, value);
 
@@ -21,23 +24,23 @@ export default class Collapsible {
   };
 
   #handleToggle = (control = this.control, region = this.region) => {
-    const value = control.getAttribute('aria-expanded') !== 'true';
+    const value = control.getAttribute(ariaExpanded) !== 'true';
 
-    setAttribute(control, 'aria-expanded', value);
+    setAttribute(control, ariaExpanded, value);
 
     if (value) {
-      removeAttribute(region, 'aria-hidden');
+      removeAttribute(region, ariaHidden);
       region.focus();
     } else {
-      setAttribute(region, 'aria-hidden', true);
+      setAttribute(region, ariaHidden, true);
     }
   };
 
   #setup = (control = this.control, region = this.region) => {
-    setAttribute(control, 'aria-expanded', false);
-    removeAttribute(control, 'aria-hidden');
+    setAttribute(control, ariaExpanded, false);
+    removeAttribute(control, ariaHidden);
 
-    setAttribute(region, 'aria-hidden', true);
+    setAttribute(region, ariaHidden, true);
     setAttribute(region, 'tabindex', -1);
 
     control.addEventListener('click', this.#handleClick);
@@ -46,10 +49,10 @@ export default class Collapsible {
   };
 
   #teardown = (control = this.control, region = this.region) => {
-    setAttribute(control, 'aria-expanded', true);
-    setAttribute(control, 'aria-hidden', true);
+    setAttribute(control, ariaExpanded, true);
+    setAttribute(control, ariaHidden, true);
 
-    removeAttribute(region, 'aria-hidden');
+    removeAttribute(region, ariaHidden);
     removeAttribute(region, 'tabindex');
 
     control.removeEventListener('click', this.#handleClick);
