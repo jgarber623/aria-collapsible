@@ -13,14 +13,6 @@
 - Dependency-free
 - ES2015/AMD/Node module support
 
-aria-collapsible is also really tiny:
-
-| Format                 | File Size   | Minified Size | Gzipped Size |
-|:-----------------------|:------------|:--------------|:-------------|
-| Uncompressed (module)  | 1,999 bytes | 1,386 bytes   | 612 bytes    |
-| Uncompressed (browser) | 2,410 bytes | 1,432 bytes   | 701 bytes    |
-| Minified (browser)     | 1,434 bytes | 1,432 bytes   | 700 bytes    |
-
 ## Getting aria-collapsible
 
 You've got a couple options for adding aria-collapsible to your project:
