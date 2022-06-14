@@ -27,6 +27,7 @@
   "repository": "github:jgarber623/aria-collapsible",
   "scripts": {
     "build": "rollup --config --input src/aria-collapsible.mjs --name Collapsible",
+    "start": "npm run build -- --watch",
     "test": "eslint ."
   },
   "devDependencies": {
