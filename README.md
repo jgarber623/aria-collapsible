@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
 [![Downloads](https://img.shields.io/npm/dt/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
-[![Build](https://img.shields.io/github/workflow/status/jgarber623/aria-collapsible/CI?logo=github&style=for-the-badge)](https://github.com/jgarber623/aria-collapsible/actions/workflows/ci.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/jgarber623/aria-collapsible/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/jgarber623/aria-collapsible/actions/workflows/ci.yml)
 [![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/jgarber623/aria-collapsible?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/jgarber623/aria-collapsible)
 
 ### Key Features
