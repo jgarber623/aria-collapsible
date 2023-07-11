@@ -4,5 +4,13 @@ module.exports = [
   ...config,
   {
     ignores: ['dist/*.?(m)js']
+  },
+  {
+    files: ['src/*.?(m)js'],
+    languageOptions: {
+      globals: {
+        document: 'readonly'
+      }
+    }
   }
 ];
