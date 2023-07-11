@@ -1,7 +1,0 @@
-{
-  "extends": "@jgarber/eslint-config/module",
-
-  "parserOptions": {
-    "ecmaVersion": 13
-  }
-}
