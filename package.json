@@ -31,8 +31,8 @@
     "start": "npm run build -- --watch"
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^1.1.0",
+    "@jgarber/eslint-config": "^1.1.1",
     "@rollup/plugin-terser": "^0.4.3",
-    "rollup": "^3.26.2"
+    "rollup": "^3.28.0"
   }
 }
