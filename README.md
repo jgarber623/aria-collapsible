@@ -10,7 +10,7 @@
 
 - Uses ARIA States and Properties
 - Dependency-free
-- ES2015/AMD/Node module support
+- ESM/AMD/CommonJS module support
 
 ## Getting aria-collapsible
 
@@ -29,7 +29,7 @@ To use aria-collapsible, your markup needs two elements: a **control** and a **r
 The two elements are associated by adding an `aria-controls="region"` attribute to the **control**. The value of the `aria-controls` attribute corresponds to the value of the **region**'s `id` attribute.
 
 ```html
-<button type="button" aria-controls="region" aria-expanded="true" aria-hidden id="control">Menu</button>
+<button aria-controls="region" aria-expanded="true" id="control" hidden>Menu</button>
 
 <nav id="region">
   <ul>
@@ -42,19 +42,9 @@ The two elements are associated by adding an `aria-controls="region"` attribute 
 </nav>
 ```
 
-### CSS
-
-Most browsers don't natively hide elements with the `aria-hidden` attribute so you'll need to add the following to your stylesheet:
-
-```css
-[aria-hidden] {
-  display: none !important;
-}
-```
-
 ### JavaScript
 
-Lastly, initialize aria-collapsible by creating a `new Collapsible`, passing in a DOM reference to the **control**, and calling the `setup()` method.
+Initialize aria-collapsible by creating a `new Collapsible`, passing in a DOM reference to the **control**, and calling the `setup()` method.
 
 ```js
 const collapsible = new Collapsible(document.querySelector('#control'));
@@ -70,7 +60,7 @@ Collapsible regions can be shown and hidden programatically using the `toggle()`
 collapsible.toggle();
 ```
 
-You can also teardown a collapsible region, resetting the DOM to its initial state and removing event handlers:
+You can also tear down a collapsible region, resetting the DOM to its initial state and removing event handlers:
 
 ```js
 collapsible.teardown();
@@ -90,11 +80,10 @@ aria-collapsible, in an effort to remain as lightweight and dependency-free as p
 
 aria-collapsible is inspired by the following works:
 
-- Steve Faulkner's article, [HTML5 Accessibility Chops: hidden and aria-hidden](http://www.paciellogroup.com/blog/2012/05/html5-accessibility-chops-hidden-and-aria-hidden/)
-- Heydon Pickering's [Progressive collapsibles demo](http://heydonworks.com/practical_aria_examples/#progressive-collapsibles)
-- Nicolas Hoffman's [jQuery collapsible regions plugin](http://a11y.nicolas-hoffmann.net/hide-show/)
-
-Special thanks to [Jeremy Fields](http://ten1seven.com/) for his help testing with [VoiceOver](https://www.apple.com/accessibility/osx/voiceover/).
+- Steve Faulkner's article, [HTML5 Accessibility Chops: hidden and aria-hidden](https://www.paciellogroup.com/blog/2012/05/html5-accessibility-chops-hidden-and-aria-hidden/)
+- Heydon Pickering's [Progressive collapsibles demo](https://web.archive.org/web/20150321045553/http://heydonworks.com:80/practical_aria_examples/#progressive-collapsibles)
+- Nicolas Hoffman's [jQuery collapsible regions plugin](https://a11y.nicolas-hoffmann.net/hide-show/)
+- Adrian Roselli's article, [Disclosure Widgets](https://adrianroselli.com/2020/05/disclosure-widgets.html)
 
 aria-collapsible is written and maintained by [Jason Garber](https://sixtwothree.org/) with the help of [some great contributors](https://github.com/jgarber623/aria-collapsible/graphs/contributors).
 
