@@ -1,5 +1,5 @@
 /*!
- *  aria-collapsible v4.0.1
+ *  aria-collapsible v5.0.0
  *
  *  A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.
  *
@@ -9,17 +9,40 @@
  *
  *  aria-collapsible may be freely distributed under the MIT license.
  */
-const ariaExpanded = "aria-expanded";
+const attrs = {
+  _get: (node, attr) => node.getAttribute(attr),
+  _set: (node, attr, value) => node.setAttribute(attr, value),
+  _remove: (node, attr) => node.removeAttribute(attr),
+  ariaControls: "aria-controls",
+  ariaExpanded: "aria-expanded",
+  hidden: "hidden"
+};
 
-const ariaHidden = "aria-hidden";
+const handleClick = (control, region) => {
+  const value = attrs._get(control, attrs.ariaExpanded) !== "true";
+  attrs._set(control, attrs.ariaExpanded, value);
+  if (value) {
+    attrs._remove(region, attrs.hidden);
+  } else {
+    attrs._set(region, attrs.hidden, true);
+  }
+};
 
-const removeAttribute = (node, attr) => node.removeAttribute(attr);
+const handleSetup = (control, region) => {
+  attrs._set(control, attrs.ariaExpanded, false);
+  attrs._remove(control, attrs.hidden);
+  attrs._set(region, attrs.hidden, true);
+};
 
-const setAttribute = (node, attr, value) => node.setAttribute(attr, value);
+const handleTeardown = (control, region) => {
+  attrs._set(control, attrs.ariaExpanded, true);
+  attrs._set(control, attrs.hidden, true);
+  attrs._remove(region, attrs.hidden);
+};
 
 class Collapsible {
   constructor(control) {
-    const region = document.getElementById(control.getAttribute("aria-controls"));
+    const region = document.getElementById(attrs._get(control, attrs.ariaControls));
     if (control && region) {
       this.control = control;
       this.region = region;
@@ -27,34 +50,17 @@ class Collapsible {
       this.teardown = this.#teardown;
     }
   }
-  #handleClick=event => {
-    event.preventDefault();
-    this.#handleToggle();
+  #click=() => handleClick(this.control, this.region);
+  #setup=() => {
+    const {control: control, region: region} = this;
+    handleSetup(control, region);
+    control.addEventListener("click", this.#click.bind(this));
+    this.toggle = this.#click;
   };
-  #handleToggle=(control = this.control, region = this.region) => {
-    const value = control.getAttribute(ariaExpanded) !== "true";
-    setAttribute(control, ariaExpanded, value);
-    if (value) {
-      removeAttribute(region, ariaHidden);
-      region.focus();
-    } else {
-      setAttribute(region, ariaHidden, true);
-    }
-  };
-  #setup=(control = this.control, region = this.region) => {
-    setAttribute(control, ariaExpanded, false);
-    removeAttribute(control, ariaHidden);
-    setAttribute(region, ariaHidden, true);
-    setAttribute(region, "tabindex", -1);
-    control.addEventListener("click", this.#handleClick);
-    this.toggle = this.#handleToggle;
-  };
-  #teardown=(control = this.control, region = this.region) => {
-    setAttribute(control, ariaExpanded, true);
-    setAttribute(control, ariaHidden, true);
-    removeAttribute(region, ariaHidden);
-    removeAttribute(region, "tabindex");
-    control.removeEventListener("click", this.#handleClick);
+  #teardown=() => {
+    const {control: control, region: region} = this;
+    handleTeardown(control, region);
+    control.removeEventListener("click", this.#click);
     this.toggle = undefined;
   };
 }
