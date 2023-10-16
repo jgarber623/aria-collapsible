@@ -1,6 +1,6 @@
 {
   "name": "aria-collapsible",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.",
   "keywords": [
     "accessibility",
