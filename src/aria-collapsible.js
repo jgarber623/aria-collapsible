@@ -1,70 +1,58 @@
-const attributes = {
-  _get: (node, attribute) => node.getAttribute(attribute),
-  _set: (node, attribute, value) => node.setAttribute(attribute, value),
-  _remove: (node, attribute) => node.removeAttribute(attribute),
-  ariaControls: 'aria-controls',
-  ariaExpanded: 'aria-expanded',
-  hidden: 'hidden'
-};
-
-const handleClick = (control, region) => {
-  const value = attributes._get(control, attributes.ariaExpanded) !== 'true';
-
-  attributes._set(control, attributes.ariaExpanded, value);
-
-  if (value) {
-    attributes._remove(region, attributes.hidden);
-  } else {
-    attributes._set(region, attributes.hidden, true);
-  }
-};
-
-const handleSetup = (control, region) => {
-  attributes._set(control, attributes.ariaExpanded, false);
-  attributes._remove(control, attributes.hidden);
-
-  attributes._set(region, attributes.hidden, true);
-};
-
-const handleTeardown = (control, region) => {
-  attributes._set(control, attributes.ariaExpanded, true);
-  attributes._set(control, attributes.hidden, true);
-
-  attributes._remove(region, attributes.hidden);
-};
-
 export default class Collapsible {
+  control;
+  region;
+
+  #_expanded = false;
+
   constructor(control) {
-    const region = document.querySelector(`#${attributes._get(control, attributes.ariaControls)}`);
-
-    if (control && region) {
-      this.control = control;
-      this.region = region;
-
-      this.setup = this.#setup;
-      this.teardown = this.#teardown;
+    if (!(control instanceof HTMLElement)) {
+      throw new TypeError(`${control} is not an HTMLElement`);
     }
+
+    const value = control.getAttribute('aria-controls');
+
+    if (value === null) {
+      throw new Error(`${control} missing required attribute 'aria-controls'`);
+    }
+
+    this.control = control;
+    /* eslint-disable-next-line unicorn/prefer-query-selector */
+    this.region = document.getElementById(value);
+
+    this.setup = this.#setup;
+    this.teardown = this.#teardown;
   }
 
-  #click = () => handleClick(this.control, this.region);
+  get #expanded() {
+    return this.#_expanded;
+  }
 
-  #setup = () => {
-    const { control, region } = this;
+  set #expanded(value) {
+    this.#_expanded = value;
 
-    handleSetup(control, region);
+    this.control.setAttribute('aria-expanded', value);
+    this.region[value ? 'removeAttribute' : 'setAttribute']('hidden', true);
+  }
 
-    control.addEventListener('click', this.#click.bind(this));
+  #setup() {
+    this.#expanded = false;
 
-    this.toggle = this.#click;
-  };
+    this.control.removeAttribute('hidden');
+    this.control.addEventListener('click', this.#toggle.bind(this));
 
-  #teardown = () => {
-    const { control, region } = this;
+    this.toggle = this.#toggle;
+  }
 
-    handleTeardown(control, region);
+  #teardown() {
+    this.#expanded = true;
 
-    control.removeEventListener('click', this.#click);
+    this.control.setAttribute('hidden', true);
+    this.control.removeEventListener('click', this.#toggle);
 
     this.toggle = undefined;
-  };
+  }
+
+  #toggle() {
+    this.#expanded = !this.#expanded;
+  }
 }
