@@ -10,13 +10,13 @@
 
 - Uses ARIA States and Properties
 - Dependency-free
-- ESM/AMD/CommonJS module support
+- JavaScript module (ESM), CommonJS, and browser global (`window.Collapsible`) support
 
 ## Getting aria-collapsible
 
 You've got a couple options for adding aria-collapsible to your project:
 
-- [Download a tagged version](https://github.com/jgarber623/aria-collapsible/tags) from GitHub and do it yourself _(old school)_.
+- [Download a release](https://github.com/jgarber623/aria-collapsible/releases) from GitHub and do it yourself _(old school)_.
 - Install using [npm](https://www.npmjs.com/package/aria-collapsible): `npm install aria-collapsible --save`
 - Install using [Yarn](https://yarnpkg.com/en/package/aria-collapsible): `yarn add aria-collapsible`
 
@@ -68,13 +68,7 @@ collapsible.teardown();
 
 ## Browser Support
 
-aria-collapsible works in modern browsers. The library makes use of several new(ish) JavaScript features, including:
-
-- Arrow function expressions ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
-- Classes ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes))
-- Private class fields ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields))
-
-aria-collapsible, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
+**aria-collapsible works in modern browsers.** The library makes use of several new(ish) JavaScript features and, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
 
 ## Acknowledgments
 
