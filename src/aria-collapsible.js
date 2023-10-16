@@ -1,7 +1,7 @@
 const attributes = {
-  _get: (node, attr) => node.getAttribute(attr),
-  _set: (node, attr, value) => node.setAttribute(attr, value),
-  _remove: (node, attr) => node.removeAttribute(attr),
+  _get: (node, attribute) => node.getAttribute(attribute),
+  _set: (node, attribute, value) => node.setAttribute(attribute, value),
+  _remove: (node, attribute) => node.removeAttribute(attribute),
   ariaControls: 'aria-controls',
   ariaExpanded: 'aria-expanded',
   hidden: 'hidden'
