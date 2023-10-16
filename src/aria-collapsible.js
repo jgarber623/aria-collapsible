@@ -1,4 +1,4 @@
-const attrs = {
+const attributes = {
   _get: (node, attr) => node.getAttribute(attr),
   _set: (node, attr, value) => node.setAttribute(attr, value),
   _remove: (node, attr) => node.removeAttribute(attr),
@@ -8,34 +8,34 @@ const attrs = {
 };
 
 const handleClick = (control, region) => {
-  const value = attrs._get(control, attrs.ariaExpanded) !== 'true';
+  const value = attributes._get(control, attributes.ariaExpanded) !== 'true';
 
-  attrs._set(control, attrs.ariaExpanded, value);
+  attributes._set(control, attributes.ariaExpanded, value);
 
   if (value) {
-    attrs._remove(region, attrs.hidden);
+    attributes._remove(region, attributes.hidden);
   } else {
-    attrs._set(region, attrs.hidden, true);
+    attributes._set(region, attributes.hidden, true);
   }
 };
 
 const handleSetup = (control, region) => {
-  attrs._set(control, attrs.ariaExpanded, false);
-  attrs._remove(control, attrs.hidden);
+  attributes._set(control, attributes.ariaExpanded, false);
+  attributes._remove(control, attributes.hidden);
 
-  attrs._set(region, attrs.hidden, true);
+  attributes._set(region, attributes.hidden, true);
 };
 
 const handleTeardown = (control, region) => {
-  attrs._set(control, attrs.ariaExpanded, true);
-  attrs._set(control, attrs.hidden, true);
+  attributes._set(control, attributes.ariaExpanded, true);
+  attributes._set(control, attributes.hidden, true);
 
-  attrs._remove(region, attrs.hidden);
+  attributes._remove(region, attributes.hidden);
 };
 
 export default class Collapsible {
   constructor(control) {
-    const region = document.getElementById(attrs._get(control, attrs.ariaControls));
+    const region = document.getElementById(attributes._get(control, attributes.ariaControls));
 
     if (control && region) {
       this.control = control;
