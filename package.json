@@ -16,23 +16,34 @@
     "url": "https://sixtwothree.org"
   },
   "files": [
-    "dist"
+    "dist/*",
+    "example/*",
+    "src/*"
   ],
-  "main": "dist/aria-collapsible.js",
-  "browser": "dist/aria-collapsible.min.js",
-  "module": "dist/aria-collapsible.mjs",
+  "type": "module",
+  "exports": {
+    "import": "./dist/aria-collapsible.mjs",
+    "require": "./dist/aria-collapsible.cjs"
+  },
+  "browser": "./dist/aria-collapsible.js",
   "directories": {
     "example": "example"
   },
   "repository": "github:jgarber623/aria-collapsible",
   "scripts": {
     "build": "rollup --config",
+    "clean": "rm -rf dist",
     "lint": "eslint .",
-    "start": "npm run build -- --watch"
+    "prebuild": "npm run clean",
+    "start": "concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
+    "start:build": "npm run build -- --watch",
+    "start:serve": "http-server ."
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^1.1.1",
-    "@rollup/plugin-terser": "^0.4.3",
-    "rollup": "^3.28.0"
+    "@jgarber/eslint-config": "^3.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "concurrently": "^8.2.1",
+    "http-server": "^14.1.1",
+    "rollup": "^4.1.3"
   }
 }
