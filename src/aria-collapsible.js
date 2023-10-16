@@ -35,7 +35,7 @@ const handleTeardown = (control, region) => {
 
 export default class Collapsible {
   constructor(control) {
-    const region = document.getElementById(attributes._get(control, attributes.ariaControls));
+    const region = document.querySelector(`#${attributes._get(control, attributes.ariaControls)}`);
 
     if (control && region) {
       this.control = control;
