@@ -1,0 +1,52 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
+  publish-to-npm:
+    name: Publish to npm
+    permissions:
+      contents: read
+      id-token: write
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish-to-github-packages:
+    name: Publish to GitHub Packages
+    permissions:
+      contents: read
+      packages: write
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Change package scope
+        run: |
+          sed -i -E s/\"aria-collapsible\"/\"@${{ github.repository_owner }}\\/aria-collapsible\"/ package.json
+          cat package.json
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

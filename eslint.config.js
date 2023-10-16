@@ -1,15 +1,16 @@
-const config = require('@jgarber/eslint-config');
+import config from '@jgarber/eslint-config';
 
-module.exports = [
+export default [
+  {
+    ignores: ['dist']
+  },
   ...config,
   {
-    ignores: ['dist/*.?(m)js']
-  },
-  {
-    files: ['src/*.?(m)js'],
+    files: ['src/*.js'],
     languageOptions: {
       globals: {
-        document: 'readonly'
+        document: 'readonly',
+        HTMLElement: 'readonly'
       }
     }
   }
