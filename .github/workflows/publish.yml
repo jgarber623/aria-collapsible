@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
           cache: npm
@@ -40,7 +40,7 @@ jobs:
         run: |
           sed -i -E s/\"aria-collapsible\"/\"@${{ github.repository_owner }}\\/aria-collapsible\"/ package.json
           cat package.json
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
           cache: npm
