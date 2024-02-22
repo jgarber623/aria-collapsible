@@ -1,0 +1,110 @@
+*:focus {
+  outline: 0.125rem solid #f00;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 3rem;
+}
+
+header {
+  margin-bottom: 3rem;
+}
+
+h1,
+h2 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: normal;
+  margin: 0 0 1.5rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+p {
+  font-family: Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 1.5em 0;
+}
+
+mark {
+  background: none;
+  border-radius: 0.25rem;
+  display: inline-block;
+  margin: -0.125rem -0.5rem;
+  padding: 0.125rem 0.5rem;
+
+  aria-collapsible[open] & {
+    background: rgb(255 255 0 / 33%);
+  }
+}
+
+a {
+  color: #c00;
+
+  &:focus,
+  &:hover {
+    color: #f00;
+  }
+}
+
+aside,
+nav {
+  background: #efefef;
+  border-radius: 3px;
+  margin: 0;
+  padding: 2rem;
+}
+
+nav {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0 -0.5rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+aside p {
+  margin: 0;
+}
+
+aria-collapsible {
+  [control]:not([hidden]) {
+    background: #efefef;
+    border: 0;
+    border-radius: 3px;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+  }
+
+  [control][aria-expanded="true"]:not([hidden]) {
+    background: #333;
+    color: #efefef;
+  }
+
+  [region] {
+    margin-top: 1rem;
+  }
+}
