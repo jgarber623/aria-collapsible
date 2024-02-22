@@ -5,8 +5,6 @@ export default [
   {
     languageOptions: {
       globals: {
-        CSSStyleSheet: "readonly",
-        document: "readonly",
         HTMLElement: "readonly",
       },
     },
