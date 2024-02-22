@@ -95,6 +95,13 @@ window.matchMedia("(width >= 32rem)").addEventListener("change", (event) => {
 
 The code snippet above was inspired by the article, <a href="https://webdevetc.com/blog/matchmedia-events-for-window-resizes/">Why you should use `window.matchMedia` when checking for window resizes in Javascript</a>.
 
+## Acknowledgments
+
+In addition to the article mentioned above, the following resources were used while making this Web Component:
+
+- [Making Web Component properties behave closer to the platform](https://blog.ltgt.net/web-component-properties/) by [Thomas Broyer](https://piaille.fr/@tbroyer)
+- [Let's create a Web Component from scratch!](https://gomakethings.com/lets-create-a-web-component-from-scratch/) and [The handleEvent() method is the absolute best way to handle events in Web Components](https://gomakethings.com/the-handleevent-method-is-the-absolute-best-way-to-handle-events-in-web-components/) by [Chris Ferdinandi](https://mastodon.social/@cferdinandi)
+
 ## License
 
 The `<aria-collapsible>` Web Component is freely available under the [MIT License](https://opensource.org/licenses/MIT).
