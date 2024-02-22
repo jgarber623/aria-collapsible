@@ -1,49 +1,35 @@
 {
-  "name": "aria-collapsible",
-  "version": "6.0.0",
-  "description": "A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using ARIA States and Properties.",
+  "name": "@jgarber/aria-collapsible",
+  "version": "7.0.0",
+  "description": "A Web Component that generates progressively-enhanced collapsible regions using ARIA States and Properties.",
   "keywords": [
     "accessibility",
     "aria",
-    "javascript"
+    "custom elements",
+    "web components"
   ],
   "homepage": "https://github.com/jgarber623/aria-collapsible",
   "bugs": "https://github.com/jgarber623/aria-collapsible/issues",
   "license": "MIT",
-  "author": {
-    "name": "Jason Garber",
-    "email": "jason@sixtwothree.org",
-    "url": "https://sixtwothree.org"
-  },
+  "author": "Jason Garber <jason@sixtwothree.org> (https://sixtwothree.org)",
   "files": [
-    "dist/*",
-    "example/*",
-    "src/*"
+    "aria-collapsible.js",
+    "example/*"
   ],
   "type": "module",
-  "exports": {
-    "import": "./dist/aria-collapsible.mjs",
-    "require": "./dist/aria-collapsible.cjs"
-  },
-  "browser": "./dist/aria-collapsible.js",
+  "main": "aria-collapsible.js",
   "directories": {
     "example": "example"
   },
   "repository": "github:jgarber623/aria-collapsible",
   "scripts": {
-    "build": "rollup --config",
-    "clean": "rm -rf dist",
     "lint": "eslint .",
-    "prebuild": "npm run clean",
-    "start": "concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
-    "start:build": "npm run build -- --watch",
-    "start:serve": "http-server ."
+    "start": "npx http-server ."
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^3.0.0",
-    "@rollup/plugin-terser": "^0.4.4",
-    "concurrently": "^8.2.2",
-    "http-server": "^14.1.1",
-    "rollup": "^4.9.4"
+    "@jgarber/eslint-config": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
