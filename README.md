@@ -1,86 +1,100 @@
-# aria-collapsible
+# `<aria-collapsible>` Web Component
 
-**A lightweight, dependency-free JavaScript module for generating progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).**
+**A dependency-free [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_Components) that generates progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).**
 
-[![npm](https://img.shields.io/npm/v/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
-[![Downloads](https://img.shields.io/npm/dt/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/aria-collapsible)
+[![npm](https://img.shields.io/npm/v/@jgarber/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@jgarber/aria-collapsible)
+[![Downloads](https://img.shields.io/npm/dt/@jgarber/aria-collapsible.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@jgarber/aria-collapsible)
 [![Build](https://img.shields.io/github/actions/workflow/status/jgarber623/aria-collapsible/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/jgarber623/aria-collapsible/actions/workflows/ci.yml)
 
-### Key Features
+🐳 📖 **[See `<aria-collapsible>` in action!](https://jgarber623.github.io/aria-collapsible/example)**
 
-- Uses ARIA States and Properties
-- Dependency-free
-- JavaScript module (ESM), CommonJS, and browser global (`window.Collapsible`) support
+> [!NOTE]
+> Prior to v7.0.0, this package exported a class, `Collapsible`, which offered similar functionality. If that better suits your needs, the legacy package is [available on npm](https://www.npmjs.com/package/aria-collapsible).
 
-## Getting aria-collapsible
+## Getting `<aria-collapsible>`
 
-You've got a couple options for adding aria-collapsible to your project:
+You've got several options for adding this Web Component to your project:
 
 - [Download a release](https://github.com/jgarber623/aria-collapsible/releases) from GitHub and do it yourself _(old school)_.
-- Install using [npm](https://www.npmjs.com/package/aria-collapsible): `npm install aria-collapsible --save`
-- Install using [Yarn](https://yarnpkg.com/en/package/aria-collapsible): `yarn add aria-collapsible`
+- Install using [npm](https://www.npmjs.com/package/@jgarber/aria-collapsible): `npm install @jgarber/aria-collapsible --save`
+- Install using [Yarn](https://yarnpkg.com/en/package/@jgarber/aria-collapsible): `yarn add @jgarber/aria-collapsible`
 
 ## Usage
 
-### HTML
-
-To use aria-collapsible, your markup needs two elements: a **control** and a **region**. The **control**, typically a `<button>` or an `<a>` element, is what your user will interact with and is the element that controls the display of the collapsible region. The **region** is an element elsewhere on the page whose display is handled by the **control**.
-
-The two elements are associated by adding an `aria-controls="region"` attribute to the **control**. The value of the `aria-controls` attribute corresponds to the value of the **region**'s `id` attribute.
+First, add this `<script>` element to your page which defines the `<aria-collapsible>` Web Component:
 
 ```html
-<button aria-controls="region" aria-expanded="true" id="control" hidden>Menu</button>
-
-<nav id="region">
-  <ul>
-    <li><a href="#">Chapter 1</a></li>
-    <li><a href="#">Chapter 2</a></li>
-    <li><a href="#">Chapter 3</a></li>
-    <li><a href="#">Chapter 4</a></li>
-    <li><a href="#">Chapter 5</a></li>
-  </ul>
-</nav>
+<script type="module" src="aria-collapsible.js"></script>
 ```
 
-### JavaScript
+Use the `<aria-collapsible>` custom element to wrap a `control` (typically, a `<button>` element) and one or more associated `region`s:
 
-Initialize aria-collapsible by creating a `new Collapsible`, passing in a DOM reference to the **control**, and calling the `setup()` method.
+```html
+<aria-collapsible>
+  <button control hidden>Toggle Menu</button>
+
+  <nav region>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles">Articles</a></li>
+      <li><a href="/photos">Photos</a></li>
+      <li><a href="/links">Links</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+</aria-collapsible>
+```
+
+> [!IMPORTANT]
+> It's recommended that you include the `hidden` attribute on the control element. This attribute will prevent the control from being displayed until the Web Component initializes and removes the `hidden` attribute.
+
+With the markup above, the Web Component will associate the control with one or more regions using the `aria-controls` attribute. For region elements without `id` attributes, unique values will be generated. Clicking the control element will alternatively show or hide the associate regions by toggling those element's `hidden` attribute.
+
+> [!TIP]
+> Styling the control and region elements is entirely up to you. Beyond the semantics of the `hidden` attribute and browsers' default styling, this Web Component is unstyled out of the box. Use your imagination. Get creative. The sky's the limit!
+
+## Optional Attributes
+
+This Web Component supports a single Boolean attribute, `open`, that behaves similarly to the `<details>` element's [attribute of the same name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#open). The presence of the `open` attribute will show regions within the Web Component and set the control's `aria-expanded` attribute value to `true`.
+
+An instance of `<aria-collapsible>` may be opened or closed by programatically setting the `open` attribute or property:
+
+```html
+<aria-collapsible open>
+  <button control hidden>Toggle</button>
+
+  <div region>
+    <p>I'm visible!</p>
+  </div>
+</aria-collapsible>
+
+<script>
+  // Close the Web Component by updating its `open` property.
+  document.querySelector("aria-collapsible").open = false;
+
+  // Re-open the Web Component by setting its `open` attribute.
+  document.querySelector("aria-collapsible").setAttribute("open", "any-value-here-works");
+</script>
+```
+
+> [!IMPORTANT]
+> Boolean attributes like `open` must be removed (either by using `removeAttribute` or setting the property to `false`). Because the attribute is a Boolean, `open="false"` will display the Web Component's region's content.
+
+> [!TIP]
+> You might consider manipulating the `open` property in conjunction with [the `window.matchMedia`'s `change` event](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia#usage_notes).
 
 ```js
-const collapsible = new Collapsible(document.querySelector('#control'));
+const component = document.querySelector("aria-collapsible");
+const control = component.querySelector("[control]");
 
-collapsible.setup();
+window.matchMedia("(width >= 32rem)").addEventListener("change", (event) => {
+  component.open = event.matches;
+  control.toggleAttribute("hidden", event.matches);
+});
 ```
 
-You can see the above in action in [the included example file](./example/index.html).
-
-Collapsible regions can be shown and hidden programatically using the `toggle()` method:
-
-```js
-collapsible.toggle();
-```
-
-You can also tear down a collapsible region, resetting the DOM to its initial state and removing event handlers:
-
-```js
-collapsible.teardown();
-```
-
-## Browser Support
-
-**aria-collapsible works in modern browsers.** The library makes use of several new(ish) JavaScript features and, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
-
-## Acknowledgments
-
-aria-collapsible is inspired by the following works:
-
-- Steve Faulkner's article, [HTML5 Accessibility Chops: hidden and aria-hidden](https://www.paciellogroup.com/blog/2012/05/html5-accessibility-chops-hidden-and-aria-hidden/)
-- Heydon Pickering's [Progressive collapsibles demo](https://web.archive.org/web/20150321045553/http://heydonworks.com:80/practical_aria_examples/#progressive-collapsibles)
-- Nicolas Hoffman's [jQuery collapsible regions plugin](https://a11y.nicolas-hoffmann.net/hide-show/)
-- Adrian Roselli's article, [Disclosure Widgets](https://adrianroselli.com/2020/05/disclosure-widgets.html)
-
-aria-collapsible is written and maintained by [Jason Garber](https://sixtwothree.org/) with the help of [some great contributors](https://github.com/jgarber623/aria-collapsible/graphs/contributors).
+The code snippet above was inspired by the article, <a href="https://webdevetc.com/blog/matchmedia-events-for-window-resizes/">Why you should use `window.matchMedia` when checking for window resizes in Javascript</a>.
 
 ## License
 
-aria-collapsible is freely available under [The MIT License](http://opensource.org/licenses/MIT). Go forth and make the Web a more accessible place.
+The `<aria-collapsible>` Web Component is freely available under the [MIT License](https://opensource.org/licenses/MIT).
