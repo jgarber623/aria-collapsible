@@ -2,117 +2,63 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>aria-collapsible: Example</title>
+  <title>&lt;aria-collapsible&gt; Web Component</title>
 
-  <style>
-    *:focus {
-      outline: 0.125rem solid #f00;
-    }
+  <script type="module" src="../aria-collapsible.js"></script>
 
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 3rem;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: 2.5rem;
-      font-weight: normal;
-      margin: 0 0 1.5rem 0;
-    }
-
-    p {
-      font-family: Georgia, serif;
-      font-size: 1.125rem;
-      line-height: 1.7;
-      margin: 1.5em 0;
-    }
-
-    a {
-      color: #c00;
-    }
-
-    a:focus,
-    a:hover {
-      color: #f00;
-    }
-
-    button:not([hidden]) {
-      background: #ccc;
-      border: 0;
-      border-radius: 3px;
-      color: #333;
-      cursor: pointer;
-      display: inline-block;
-      font: inherit;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      text-transform: uppercase;
-    }
-
-    button[aria-expanded="true"]:not([hidden]) {
-      background: #333;
-      color: #ccc;
-    }
-
-    nav {
-      margin-top: 1rem;
-    }
-
-    nav ul {
-      background: #efefef;
-      border-radius: 3px;
-      list-style: none;
-      margin: 0;
-      padding: 2rem;
-    }
-
-    nav li + li {
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      display: inline-block;
-      margin: 0 -0.5rem;
-      padding: 0.25rem 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
   <header>
     <h1><cite>Moby-Dick; or, The Whale</cite></h1>
 
-    <button aria-controls="region" aria-expanded="true" id="control" hidden>Menu</button>
+    <aria-collapsible>
+      <button control hidden>📖 Toggle Chapters Menu</button>
 
-    <nav id="region">
-      <ul>
-        <li><a href="#">Chapter 1</a></li>
-        <li><a href="#">Chapter 2</a></li>
-        <li><a href="#">Chapter 3</a></li>
-        <li><a href="#">Chapter 4</a></li>
-        <li><a href="#">Chapter 5</a></li>
-      </ul>
-    </nav>
+      <nav region>
+        <ul>
+          <li><a href="#" rel="self">Chapter 1. Loomings.</a></li>
+          <li><a href="#" rel="next">Chapter 2. The Carpet-Bag.</a></li>
+          <li><a href="#">Chapter 3. The Spouter-Inn.</a></li>
+          <li><a href="#">Chapter 4. The Counterpane.</a></li>
+          <li><a href="#">Chapter 5. Breakfast.</a></li>
+        </ul>
+      </nav>
+    </aria-collapsible>
   </header>
 
   <main>
-    <p>Call me <a href="https://en.wikipedia.org/wiki/Ishmael_(Moby-Dick)">Ishmael</a>. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
-    <p>There now is your insular city of the Manhattoes, belted round by wharves as Indian isles by coral reefs—commerce surrounds it with her surf. Right and left, the streets take you waterward. Its extreme downtown is the battery, where that noble mole is washed by waves, and cooled by breezes, which a few hours previous were out of sight of land. Look at the crowds of water-gazers there.</p>
-    <p>Circumambulate the city of a dreamy Sabbath afternoon. Go from Corlears Hook to Coenties Slip, and from thence, by Whitehall, northward. What do you see?—Posted like silent sentinels all around the town, stand thousands upon thousands of mortal men fixed in ocean reveries. Some leaning against the spiles; some seated upon the pier-heads; some looking over the bulwarks of ships from China; some high aloft in the rigging, as if striving to get a still better seaward peep. But these are all landsmen; of week days pent up in lath and plaster—tied to counters, nailed to benches, clinched to desks. How then is this? Are the green fields gone? What do they here?</p>
-    <p>But look! here come more crowds, pacing straight for the water, and seemingly bound for a dive. Strange! Nothing will content them but the extremest limit of the land; loitering under the shady lee of yonder warehouses will not suffice. No. They must get just as nigh the water as they possibly can without falling in. And there they stand—miles of them—leagues. Inlanders all, they come from lanes and alleys, streets and avenues—north, east, south, and west. Yet here they all unite. Tell me, does the magnetic virtue of the needles of the compasses of all those ships attract them thither?</p>
-    <p>Once more. Say you are in the country; in some high land of lakes. Take almost any path you please, and ten to one it carries you down in a dale, and leaves you there by a pool in the stream. There is magic in it. Let the most absent-minded of men be plunged in his deepest reveries—stand that man on his legs, set his feet a-going, and he will infallibly lead you to water, if water there be in all that region. Should you ever be athirst in the great American desert, try this experiment, if your caravan happen to be supplied with a metaphysical professor. Yes, as every one knows, meditation and water are wedded for ever.</p>
+    <h2>Chapter 1. Loomings.</h2>
+
+    <aria-collapsible open>
+      <button control hidden>📝 Toggle Notes</button>
+
+      <p>Call me <a href="https://en.wikipedia.org/wiki/Ishmael_(Moby-Dick)">Ishmael</a>. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.</p>
+
+      <aside region>
+        <p><b>Manhattoes</b> is a term describing a place and, mistakenly, a people. <a href="https://en.wikipedia.org/wiki/Manhattoe">Read more on Wikipedia</a>.</p>
+      </aside>
+
+      <p>There now is your insular city of the <mark>Manhattoes</mark>, belted round by wharves as Indian isles by coral reefs—commerce surrounds it with her surf. Right and left, the streets take you waterward. Its extreme downtown is the battery, where that noble mole is washed by waves, and cooled by breezes, which a few hours previous were out of sight of land. Look at the crowds of water-gazers there.</p>
+
+      <aside region>
+        <p><b>Coenties Slip</b> is a street in the Financial District of Manhattan in New York City. <a href="https://en.wikipedia.org/wiki/Coenties_Slip">Read more on Wikipedia</a>.</p>
+      </aside>
+
+      <p>Circumambulate the city of a dreamy Sabbath afternoon. Go from Corlears Hook to <mark>Coenties Slip</mark>, and from thence, by Whitehall, northward. What do you see?—Posted like silent sentinels all around the town, stand thousands upon thousands of mortal men fixed in ocean reveries. Some leaning against the spiles; some seated upon the pier-heads; some looking over the <mark>bulwarks</mark> of ships from China; some high aloft in the rigging, as if striving to get a still better seaward peep. But these are all landsmen; of week days pent up in lath and plaster—tied to counters, nailed to benches, clinched to desks. How then is this? Are the green fields gone? What do they here?</p>
+
+      <aside region>
+        <p>A <b>bulwark</b> (<i>noun</i>) is a wall of earth or other material built for defense. <a href="https://www.dictionary.com/browse/bulwark">Read more on dictionary.com</a>.</p>
+      </aside>
+
+      <p>But look! here come more crowds, pacing straight for the water, and seemingly bound for a dive. Strange! Nothing will content them but the extremest limit of the land; loitering under the shady lee of yonder warehouses will not suffice. No. They must get just as nigh the water as they possibly can without falling in. And there they stand—miles of them—leagues. Inlanders all, they come from lanes and alleys, streets and avenues—north, east, south, and west. Yet here they all unite. Tell me, does the magnetic virtue of the needles of the compasses of all those ships attract them thither?</p>
+
+      <p>Once more. Say you are in the country; in some high land of lakes. Take almost any path you please, and ten to one it carries you down in a dale, and leaves you there by a pool in the stream. There is magic in it. Let the most absent-minded of men be plunged in his deepest reveries—stand that man on his legs, set his feet a-going, and he will infallibly lead you to water, if water there be in all that region. Should you ever be athirst in the great American desert, try this experiment, if your caravan happen to be supplied with a metaphysical professor. Yes, as every one knows, meditation and water are wedded for ever.</p>
+    </aria-collapsible>
   </main>
-
-  <script type="module">
-    import Collapsible from '../dist/aria-collapsible.mjs';
-
-    const collapsible = new Collapsible(document.querySelector('#control'));
-
-    collapsible.setup();
-  </script>
 
 </body>
 </html>

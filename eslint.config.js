@@ -1,17 +1,14 @@
-import config from '@jgarber/eslint-config';
+import config from "@jgarber/eslint-config";
 
 export default [
-  {
-    ignores: ['dist']
-  },
   ...config,
   {
-    files: ['src/*.js'],
     languageOptions: {
       globals: {
-        document: 'readonly',
-        HTMLElement: 'readonly'
-      }
-    }
-  }
+        CSSStyleSheet: "readonly",
+        document: "readonly",
+        HTMLElement: "readonly",
+      },
+    },
+  },
 ];
