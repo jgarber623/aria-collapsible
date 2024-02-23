@@ -30,7 +30,7 @@ export default class AriaCollapsible extends HTMLElement {
       region.toggleAttribute("hidden", !this.open);
     }
 
-    this.dispatchEvent(new Event('toggle', {
+    this.dispatchEvent(new Event("toggle", {
       bubbles: true,
       cancelable: true,
     }));
