@@ -45,13 +45,17 @@ Use the `<aria-collapsible>` custom element to wrap a `control` (typically, a `<
 </aria-collapsible>
 ```
 
+With the markup above, the Web Component will associate the control with one or more regions using the `aria-controls` attribute. For region elements without `id` attributes, unique values will be generated. Clicking the control element will alternatively show or hide the associate regions by toggling those element's `hidden` attribute.
+
 > [!IMPORTANT]
 > It's recommended that you include the `hidden` attribute on the control element. This attribute will prevent the control from being displayed until the Web Component initializes and removes the `hidden` attribute.
 
-With the markup above, the Web Component will associate the control with one or more regions using the `aria-controls` attribute. For region elements without `id` attributes, unique values will be generated. Clicking the control element will alternatively show or hide the associate regions by toggling those element's `hidden` attribute.
+> [!IMPORTANT]
+> It's recommended that the region element(s) immediately follow the control element in HTML source order. See the [Focus and Reading Order](https://adrianroselli.com/2020/05/disclosure-widgets.html#Order) section in [Disclosure Widgets](https://adrianroselli.com/2020/05/disclosure-widgets.html) for additional information.
 
-> [!TIP]
-> Styling the control and region elements is entirely up to you. Beyond the semantics of the `hidden` attribute and browsers' default styling, this Web Component is unstyled out of the box. Use your imagination. Get creative. The sky's the limit!
+Styling the control and region elements is entirely up to you. Beyond the semantics of the `hidden` attribute and browsers' default styling, this Web Component is unstyled out of the box. Use your imagination. Get creative. The sky's the limit!
+
+In addition to the above-mentioned Disclosure Widgets article, the Web Accessibility Initiative's [Disclosure (Show/Hide) Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) page provides additional examples where you may consider using this Web Component.
 
 ## Optional Attributes
 
@@ -93,12 +97,18 @@ window.matchMedia("(width >= 32rem)").addEventListener("change", (event) => {
 });
 ```
 
-The code snippet above was inspired by the article, <a href="https://webdevetc.com/blog/matchmedia-events-for-window-resizes/">Why you should use `window.matchMedia` when checking for window resizes in Javascript</a>.
+The code snippet above was inspired by the article, [Why you should use `window.matchMedia` when checking for window resizes in Javascript](https://webdevetc.com/blog/matchmedia-events-for-window-resizes/).
+
+## Events
+
+The `<aria-collapsible>` Web Component supports a `toggle` event which is dispatched whenever the component's `open` property changes. The event is sent after the control element's `aria-expanded` attributed and associated regions' `hidden` attributes are updated. This event is provided to authors who wish (or need!) to provide additional behavior or surface information to users based on this Web Component's state.
 
 ## Acknowledgments
 
-In addition to the article mentioned above, the following resources were used while making this Web Component:
+The following resources were used while making this Web Component:
 
+- [Disclosure Widgets](https://adrianroselli.com/2020/05/disclosure-widgets.html) by [Adrian Roselli](https://toot.cafe/@aardrian)
+- [Disclosure (Show/Hide) Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) by [The Web Accessibility Initiative](https://w3c.social/@wai)
 - [Making Web Component properties behave closer to the platform](https://blog.ltgt.net/web-component-properties/) by [Thomas Broyer](https://piaille.fr/@tbroyer)
 - [Let's create a Web Component from scratch!](https://gomakethings.com/lets-create-a-web-component-from-scratch/) and [The handleEvent() method is the absolute best way to handle events in Web Components](https://gomakethings.com/the-handleevent-method-is-the-absolute-best-way-to-handle-events-in-web-components/) by [Chris Ferdinandi](https://mastodon.social/@cferdinandi)
 
