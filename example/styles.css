@@ -35,18 +35,6 @@ p {
   margin: 1.5em 0;
 }
 
-mark {
-  background: none;
-  border-radius: 0.25rem;
-  display: inline-block;
-  margin: -0.125rem -0.5rem;
-  padding: 0.125rem 0.5rem;
-
-  aria-collapsible[open] & {
-    background: rgb(255 255 0 / 33%);
-  }
-}
-
 a {
   color: #c00;
 
@@ -56,15 +44,12 @@ a {
   }
 }
 
-aside,
 nav {
   background: #efefef;
   border-radius: 3px;
   margin: 0;
   padding: 2rem;
-}
 
-nav {
   ul {
     list-style: none;
     margin: 0;
@@ -80,10 +65,6 @@ nav {
     margin: 0 -0.5rem;
     padding: 0.25rem 0.5rem;
   }
-}
-
-aside p {
-  margin: 0;
 }
 
 aria-collapsible {
