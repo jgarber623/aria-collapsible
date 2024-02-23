@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/aria-collapsible",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "A Web Component that generates progressively-enhanced collapsible regions using ARIA States and Properties.",
   "keywords": [
     "accessibility",
