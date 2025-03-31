@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project has moved to [codeberg.org/jgarber/aria-collapsible](https://codeberg.org/jgarber/aria-collapsible).
+
 # `<aria-collapsible>` Web Component
 
 **A dependency-free [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_Components) that generates progressively-enhanced collapsible regions using [ARIA States and Properties](http://www.w3.org/TR/wai-aria/states_and_properties).**
